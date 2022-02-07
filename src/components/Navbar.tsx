@@ -1,0 +1,45 @@
+import { FaTimes, FaBars } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+import { links } from '../utils/constant';
+import CartButtons from './CartButtons';
+
+const Navbar = () => {
+  return (
+    <header className="pt-8 pb-8 lg:pb-16">
+      <div className="container mx-auto px-8 lg:px-32">
+        <nav className="flex justify-between items-center">
+          {/* Logo */}
+          <Link to="/">
+            <h1 className="text-2xl font-bold">
+              Vint<span className="text-orange-400">age</span>
+            </h1>
+          </Link>
+
+          {/* Mobile Toggle */}
+          <button className="block lg:hidden text-xl">
+            <FaBars />
+          </button>
+
+          {/* Navbar Links */}
+          <ul className="hidden lg:flex items-center gap-12 capitalize">
+            {links.map(link => {
+              const { id, text, url } = link;
+              return (
+                <li key={id}>
+                  <Link to={url} className="hover:text-orange-400">
+                    {text}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+
+          {/* Cart Buttons */}
+          <CartButtons show={false} />
+        </nav>
+      </div>
+    </header>
+  );
+};
+
+export default Navbar;
