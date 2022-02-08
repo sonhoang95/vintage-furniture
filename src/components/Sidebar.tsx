@@ -2,7 +2,7 @@ import { FaTimes } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { useGlobalContext } from '../context/global_context';
 import { links } from '../utils/constant';
-import CartButtons from './CartButtons';
+import { CartButtons } from './Buttons';
 
 const Sidebar = () => {
   const { isSidebarOpen, closeSidebar } = useGlobalContext();

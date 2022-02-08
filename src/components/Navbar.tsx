@@ -1,13 +1,13 @@
-import { FaTimes, FaBars } from 'react-icons/fa';
+import { FaBars } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { useGlobalContext } from '../context/global_context';
 import { links } from '../utils/constant';
-import CartButtons from './CartButtons';
+import { CartButtons } from './Buttons';
 
 const Navbar = () => {
   const { openSidebar } = useGlobalContext();
   return (
-    <header className="pt-8 pb-8 lg:pb-16">
+    <header className="pt-8 lg:mb-16">
       <div className="container mx-auto px-8 lg:px-32">
         <nav className="flex justify-between items-center">
           {/* Logo */}
@@ -34,6 +34,11 @@ const Navbar = () => {
                 </li>
               );
             })}
+            <li>
+              <Link to="checkout" className="hover:text-orange-400">
+                Checkout
+              </Link>
+            </li>
           </ul>
 
           {/* Cart Buttons */}

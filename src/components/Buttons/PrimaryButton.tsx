@@ -4,7 +4,7 @@ export interface PrimaryButtonProps {
   btnText: string;
   url: string;
 }
-export const PrimaryButton = ({ btnText, url }: PrimaryButtonProps) => {
+const PrimaryButton = ({ btnText, url }: PrimaryButtonProps) => {
   return (
     <>
       <Link
@@ -16,3 +16,5 @@ export const PrimaryButton = ({ btnText, url }: PrimaryButtonProps) => {
     </>
   );
 };
+
+export default PrimaryButton;

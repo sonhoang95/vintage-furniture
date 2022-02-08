@@ -4,7 +4,7 @@ import {
   About,
   Cart,
   Checkout,
-  Contact,
+  FAQ,
   Error,
   Home,
   Products,
@@ -18,7 +18,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about-us" element={<About />} />
-          <Route path="/contact-us" element={<Contact />} />
+          <Route path="/faq" element={<FAQ />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/products" element={<Products />} />
           <Route path="/products/:id" element={<SingleProduct />} />

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { BsBagFill } from 'react-icons/bs';
-import { useGlobalContext } from '../context/global_context';
+import { useGlobalContext } from '../../context/global_context';
 
 interface CartButtonsProps {
   show: boolean;

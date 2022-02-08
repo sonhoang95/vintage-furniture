@@ -1,8 +1,7 @@
-import Hero from '../components/Hero';
+import { Hero } from '../components';
 import heroBcg from '../images/hero-bcg.jpg';
-import Layout from '../layout';
 
-const homepageContent = {
+const homeContent = {
   hero: {
     title: 'Each Project we develop is unique and personal',
     subTitle:
@@ -18,7 +17,11 @@ const homepageContent = {
 };
 
 const Home = () => {
-  return <Hero content={homepageContent.hero} />;
+  return (
+    <div className="container mx-auto px-8 lg:px-32">
+      <Hero content={homeContent.hero} />
+    </div>
+  );
 };
 
 export default Home;
