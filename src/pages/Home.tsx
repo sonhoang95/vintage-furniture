@@ -12,7 +12,6 @@ const homepageContent = {
       { number: '150', text: 'total crafters' },
       { number: '9.0/10', text: 'user satisfaction' },
     ],
-    btnText: 'shop now',
     imgSrc: heroBcg,
     imgAlt: 'vintage armchair',
   },

@@ -1,9 +1,11 @@
 import { FaTimes, FaBars } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { useGlobalContext } from '../context/global_context';
 import { links } from '../utils/constant';
 import CartButtons from './CartButtons';
 
 const Navbar = () => {
+  const { openSidebar } = useGlobalContext();
   return (
     <header className="pt-8 pb-8 lg:pb-16">
       <div className="container mx-auto px-8 lg:px-32">
@@ -16,7 +18,7 @@ const Navbar = () => {
           </Link>
 
           {/* Mobile Toggle */}
-          <button className="block lg:hidden text-xl">
+          <button className="block lg:hidden text-xl" onClick={openSidebar}>
             <FaBars />
           </button>
 

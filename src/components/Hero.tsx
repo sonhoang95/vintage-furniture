@@ -1,3 +1,6 @@
+import { Link } from 'react-router-dom';
+import { PrimaryButton } from './Buttons';
+
 export interface HeroProps {
   content: {
     title: string;
@@ -6,13 +9,13 @@ export interface HeroProps {
       number: string;
       text: string;
     }[];
-    btnText: string;
+
     imgSrc: string;
     imgAlt: string;
   };
 }
 const Hero = ({ content }: HeroProps) => {
-  const { title, subTitle, highlights, btnText, imgSrc, imgAlt } = content;
+  const { title, subTitle, highlights, imgSrc, imgAlt } = content;
   return (
     <div className="container mx-auto px-8 lg:px-32">
       <section className="flex flex-col lg:flex-row items-center justify-between">
@@ -32,12 +35,7 @@ const Hero = ({ content }: HeroProps) => {
               );
             })}
           </div>
-          <a
-            className="inline-block px-12 lg:px-8 py-3 uppercase text-sm font-bold bg-orange-400 text-white mb-8 lg:mb-0"
-            href="/products"
-          >
-            {btnText}
-          </a>
+          <PrimaryButton btnText="shop now" url="/products" />
         </div>
         <div className="min-w-full lg:min-w-0 w-5/12">
           <img src={imgSrc} alt={imgAlt} />
