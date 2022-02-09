@@ -5,6 +5,12 @@ import jessie from '../images/jessie.jpg';
 import jacob from '../images/jacob.jpg';
 import ben from '../images/ben.jpg';
 import ali from '../images/ali.jpg';
+import {
+  FaFacebookF,
+  FaTwitter,
+  FaLinkedinIn,
+  FaInstagram,
+} from 'react-icons/fa';
 export const links = [
   {
     id: 1,
@@ -25,6 +31,25 @@ export const links = [
     id: 4,
     text: 'FAQ',
     url: '/faq',
+  },
+];
+
+export const socials = [
+  {
+    id: 1,
+    icon: <FaFacebookF />,
+  },
+  {
+    id: 2,
+    icon: <FaInstagram />,
+  },
+  {
+    id: 3,
+    icon: <FaTwitter />,
+  },
+  {
+    id: 4,
+    icon: <FaLinkedinIn />,
   },
 ];
 
