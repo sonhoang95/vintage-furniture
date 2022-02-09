@@ -82,6 +82,38 @@ export const aboutContent = {
   },
 };
 
+export const faqContent = {
+  title: 'FAQ',
+  text: "Quality is at the heart of everything we do, whether it's about the eco friendly materials we are using or the service we provide",
+  accordions: [
+    {
+      question: 'How can I get a Price List or other literature?',
+      answer:
+        'Authorized dealers can request literature via e-mail, fax, or phone from Customer Service. If you are not an authorized Indiana Furniture Dealer, you should contact your local Rep using the information on the Rep Locator via this website.',
+    },
+    {
+      question: 'Can my order drop ship to my customer?',
+      answer:
+        "You can specify a drop ship to any location within the continental United States that has a dock, can receive a 53' trailer and is not a residential area. Please include a phone number as our carrier will call prior to delivery.",
+    },
+    {
+      question: 'What is the warranty on your products?',
+      answer:
+        'Casegood and Seating products carry a 12 year limited warranty; some exclusions apply. See the warranty page of each Price List for details.',
+    },
+    {
+      question: 'Is there a freight charge on my order?',
+      answer:
+        'Shipments totaling less than $2000 (net value, product only) will be assessed a small order fee of $200 net per shipment.  This fee is waived for items shipped by small parcel carrier such as UPS.',
+    },
+    {
+      question: 'What is your cancellation policy?',
+      answer:
+        'All orders are subjected to cancellation within 30 days of purchase with full refund by Vintage Furniture.',
+    },
+  ],
+};
+
 export const missions = [
   {
     id: 1,
