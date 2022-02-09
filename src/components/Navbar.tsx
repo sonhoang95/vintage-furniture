@@ -7,7 +7,7 @@ import { CartButtons } from './Buttons';
 const Navbar = () => {
   const { openSidebar } = useGlobalContext();
   return (
-    <header className="pt-8 lg:mb-16">
+    <header className="pt-8 pb-16 lg:pb-0 lg:mb-12">
       <div className="container mx-auto px-8 lg:px-32">
         <nav className="flex justify-between items-center">
           {/* Logo */}
