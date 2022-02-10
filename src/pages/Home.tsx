@@ -1,4 +1,4 @@
-import { Contact, Hero, Missions } from '../components';
+import { Contact, FeaturedProducts, Hero, Missions } from '../components';
 import heroBcg from '../images/hero-bcg.jpg';
 import heroBcgTwo from '../images/hero-bcg-2.jpeg';
 import { Fragment } from 'react';
@@ -56,6 +56,7 @@ const Home = () => {
           <img src={heroBcgTwo} alt="furniture" />
         </div>
         <Missions {...missions} />
+        <FeaturedProducts />
       </div>
       <Contact {...contact} />
     </>

@@ -8,6 +8,7 @@ import Values from './Values';
 import Accordion from './Accordion';
 import Missions from './Missions';
 import Contact from './Contact';
+import FeaturedProducts from './FeaturedProducts';
 
 export {
   Hero,
@@ -20,4 +21,5 @@ export {
   Accordion,
   Missions,
   Contact,
+  FeaturedProducts,
 };

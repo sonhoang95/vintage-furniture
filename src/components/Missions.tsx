@@ -11,7 +11,7 @@ export interface MissionsProps {
 }
 const Missions = ({ title, btnText, messages }: MissionsProps) => {
   return (
-    <section className="flex flex-col lg:flex-row mb-16 lg:mb-32">
+    <section className="flex flex-col lg:flex-row">
       <div className="lg:mr-40 mb-8 lg:mb-0">
         <h2 className="text-2xl lg:text-4xl leading-normal font-semibold mb-6 lg:mb-12">
           {title}
