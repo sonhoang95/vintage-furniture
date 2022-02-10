@@ -8,7 +8,6 @@ export interface HeroProps {
       number: string;
       text: string;
     }[];
-
     imgSrc: string;
     imgAlt: string;
   };

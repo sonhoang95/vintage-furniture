@@ -6,5 +6,18 @@ import PageHero from './PageHero';
 import Team from './Team';
 import Values from './Values';
 import Accordion from './Accordion';
+import Missions from './Missions';
+import Contact from './Contact';
 
-export { Hero, Navbar, Sidebar, Footer, PageHero, Team, Values, Accordion };
+export {
+  Hero,
+  Navbar,
+  Sidebar,
+  Footer,
+  PageHero,
+  Team,
+  Values,
+  Accordion,
+  Missions,
+  Contact,
+};
