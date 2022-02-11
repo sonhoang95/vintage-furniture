@@ -1,27 +1,21 @@
-import { Link } from 'react-router-dom';
+import { SimpleButton } from './Buttons';
 
 export interface MissionsProps {
   title: string;
-  btnText: string;
   messages: {
     id: number;
     title: string;
     text: string;
   }[];
 }
-const Missions = ({ title, btnText, messages }: MissionsProps) => {
+const Missions = ({ title, messages }: MissionsProps) => {
   return (
     <section className="flex flex-col lg:flex-row">
       <div className="lg:mr-40 mb-8 lg:mb-0">
         <h2 className="text-2xl lg:text-4xl leading-normal font-semibold mb-6 lg:mb-12">
           {title}
         </h2>
-        <Link
-          to="/products"
-          className="text-orange-400 uppercase underline font-semibold hover:text-orange-600 transition-colors duration-300"
-        >
-          {btnText}
-        </Link>
+        <SimpleButton btnText="explore all variations" url="/products" />
       </div>
       <div className="space-y-6">
         {messages.map(message => {

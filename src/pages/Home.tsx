@@ -18,7 +18,6 @@ const homeContent = {
   },
   missions: {
     title: 'There are many different types of chairs depending on its usage',
-    btnText: 'explore all variations',
     messages: [
       {
         id: 1,

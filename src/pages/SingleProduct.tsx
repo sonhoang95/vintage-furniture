@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { single_product_url as url } from '../utils/constant';
 import { formatPrice } from '../utils/helpers';
 import { useProductsContext } from '../context/products_context';
@@ -6,7 +7,8 @@ import { useEffect } from 'react';
 import Loading from '../components/Loading';
 import Error from '../components/Error';
 import { AddToCart, PageHero, ProductImages, Stars } from '../components';
-import { PrimaryButton } from '../components/Buttons';
+import { SimpleButton } from '../components/Buttons';
+import { AiOutlineArrowLeft } from 'react-icons/ai';
 
 const SingleProduct = () => {
   const { id } = useParams();
@@ -65,13 +67,17 @@ const SingleProduct = () => {
     <>
       <PageHero title={name} showProduct />
       <div className="container mx-auto px-8 lg:px-32">
-        <PrimaryButton url="/products" btnText="back to products" />
-        <section className="my-16 flex flex-col lg:flex-row gap-12">
+        <SimpleButton
+          url="/products"
+          btnText="back to products"
+          icon={<AiOutlineArrowLeft />}
+        />
+        <section className="mt-8 mb-16 flex flex-col lg:flex-row gap-12">
           <ProductImages images={images} />
           <div className="lg:w-1/2 space-y-3">
             <h2 className="text-3xl font-bold capitalize">{name}</h2>
-            <Stars />
-            <h5 className="text-lg text-orange-500 font-semibold">
+            <Stars stars={stars} reviews={reviews} />
+            <h5 className="text-lg text-orange-700 font-semibold">
               {formatPrice(price)}
             </h5>
             <p className="leading-loose pb-8">{description}</p>

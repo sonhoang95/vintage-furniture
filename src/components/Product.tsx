@@ -16,7 +16,7 @@ const Product = ({ id, image, name, price }: IProduct) => {
       </Link>
       <footer className="flex items-center justify-between capitalize tracking-wider font-semibold ">
         <h5>{name}</h5>
-        <p className="text-orange-400">{formatPrice(price)}</p>
+        <p className="text-orange-700">{formatPrice(price)}</p>
       </footer>
     </article>
   );
