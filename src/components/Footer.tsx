@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { links, socials } from '../utils/constant';
-import { AiOutlineArrowRight } from 'react-icons/ai';
+import { SecondaryButton } from './Buttons';
+
 const Footer = () => {
   return (
     <footer className="lg:text-lg py-6 bg-gray-900 text-gray-50">
@@ -9,12 +10,7 @@ const Footer = () => {
           <p className="text-3xl lg:text-4xl font-bold text-center lg:text-left">
             Here's what we are made of
           </p>
-          <div className="px-6 p-2 rounded-full bg-orange-400 text-white flex items-center gap-2 cursor-pointer hover:bg-orange-500 transform hover:scale-105 transition-all duration-300">
-            <Link to="/about-us">Know us better</Link>
-            <span>
-              <AiOutlineArrowRight />
-            </span>
-          </div>
+          <SecondaryButton url="/about-us" btnText="Know us better" />
         </div>
         <section className="flex flex-col lg:flex-row items-center justify-between pt-6">
           <div className="flex flex-col lg:flex-row items-center gap-6 lg:gap-20">

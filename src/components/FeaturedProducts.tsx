@@ -1,16 +1,16 @@
-import { useProductsContext } from '../context/product_context';
+import { useProductsContext } from '../context/products_context';
 import Error from './Error';
 import Loading from './Loading';
 import Product from './Product';
 
 const FeaturedProducts = () => {
   const {
-    isLoading,
-    isError,
+    products_loading: loading,
+    products_error: error,
     featured_products: featured,
   } = useProductsContext();
 
-  if (isLoading) {
+  if (loading) {
     return (
       <section className="py-16 lg:py-32">
         <Loading />
@@ -18,7 +18,7 @@ const FeaturedProducts = () => {
     );
   }
 
-  if (isError) {
+  if (error) {
     return (
       <section className="py-16 lg:py-32">
         <Error />
@@ -28,10 +28,13 @@ const FeaturedProducts = () => {
   return (
     <section className="py-12 lg:py-32">
       <div className="mb-6 lg:mb-12">
-        <h2 className="text-2xl lg:text-4xl leading-normal font-semibold text-center mb-1 lg:mb-3">
-          Featured products
+        <h2 className="text-2xl lg:text-4xl leading-normal font-semibold mb-2 lg:mb-3">
+          Discover the interior design of your dream
         </h2>
-        <div className="bg-orange-400 w-24 lg:w-32 h-1 lg:h-2 mx-auto"></div>
+        <p>
+          From mixing and matching woods to understand which coffee tables are
+          best for different types of sectional, styling a room is an art
+        </p>
       </div>
       <div className="grid lg:grid-cols-3 gap-6">
         {featured.map(product => (

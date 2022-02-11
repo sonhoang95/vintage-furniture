@@ -18,7 +18,7 @@ const Missions = ({ title, btnText, messages }: MissionsProps) => {
         </h2>
         <Link
           to="/products"
-          className="text-orange-400 uppercase underline font-semibold"
+          className="text-orange-400 uppercase underline font-semibold hover:text-orange-600 transition-colors duration-300"
         >
           {btnText}
         </Link>

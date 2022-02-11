@@ -1,50 +1,32 @@
 import React, { useContext, useEffect, useReducer } from 'react';
-import { reducer } from '../reducers/product_reducer';
-import { ProviderProps } from '../types';
+import { reducer } from '../reducers/products_reducer';
+import { IProduct, ProductDetails, ProviderProps } from '../types';
 import { products_url as url } from '../utils/constant';
 import axios from 'axios';
 
-export interface IProduct {
-  id: string;
-  name: string;
-  price: number;
-  image: string;
-  colors: Color[];
-  company: Company;
-  description: string;
-  category: string;
-  shipping?: boolean;
-  featured?: boolean;
-}
-
-export enum Color {
-  Ff0000 = '#ff0000',
-  Ffb900 = '#ffb900',
-  The000 = '#000',
-  The0000Ff = '#0000ff',
-  The00Ff00 = '#00ff00',
-}
-
-export enum Company {
-  Caressa = 'caressa',
-  Ikea = 'ikea',
-  Liddy = 'liddy',
-  Marcos = 'marcos',
-}
-
 export interface ProductsState {
-  isLoading: boolean;
-  isError: boolean;
+  products_loading: boolean;
+  products_error: boolean;
   products: IProduct[];
   featured_products: IProduct[];
+  single_product_loading: boolean;
+  single_product_error: boolean;
+  single_product: ProductDetails;
+  getSingleProduct: (url: string) => void;
 }
 export const ProductContext = React.createContext({} as ProductsState);
 
-const initialState: ProductsState = {
-  isLoading: false,
-  isError: false,
+const initialState = {
+  products_loading: false,
+  products_error: false,
   products: [],
   featured_products: [],
+  single_product_loading: false,
+  single_product_error: false,
+  single_product: {},
+  getSingleProduct: (url: string) => {
+    return;
+  },
 };
 
 export const ProductProvider = ({ children }: ProviderProps) => {
@@ -61,11 +43,23 @@ export const ProductProvider = ({ children }: ProviderProps) => {
     }
   };
 
+  const getSingleProduct = async (url: string) => {
+    dispatch({ type: 'GET_SINGLE_PRODUCT_BEGIN' });
+    try {
+      const response = await axios.get(url);
+      const single_product: ProductDetails = response.data;
+      dispatch({ type: 'GET_SINGLE_PRODUCT_SUCCESS', payload: single_product });
+    } catch (error) {
+      dispatch({ type: 'GET_SINGLE_PRODUCT_ERROR' });
+    }
+  };
+
   useEffect(() => {
     getProducts(url);
   }, []);
+
   return (
-    <ProductContext.Provider value={{ ...state }}>
+    <ProductContext.Provider value={{ ...state, getSingleProduct }}>
       {children}
     </ProductContext.Provider>
   );

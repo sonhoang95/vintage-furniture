@@ -9,6 +9,9 @@ import Accordion from './Accordion';
 import Missions from './Missions';
 import Contact from './Contact';
 import FeaturedProducts from './FeaturedProducts';
+import ProductImages from './ProductImages';
+import Stars from './Stars';
+import AddToCart from './AddToCart';
 
 export {
   Hero,
@@ -22,4 +25,7 @@ export {
   Missions,
   Contact,
   FeaturedProducts,
+  ProductImages,
+  Stars,
+  AddToCart,
 };
