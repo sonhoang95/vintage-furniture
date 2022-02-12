@@ -4,12 +4,15 @@ import './index.css';
 import App from './App';
 import { GlobalProvider } from './context/global_context';
 import { ProductProvider } from './context/products_context';
+import { FilterProvider } from './context/filter_context';
 
 ReactDOM.render(
   <React.StrictMode>
     <GlobalProvider>
       <ProductProvider>
-        <App />
+        <FilterProvider>
+          <App />
+        </FilterProvider>
       </ProductProvider>
     </GlobalProvider>
   </React.StrictMode>,

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useReducer } from 'react';
-import { reducer } from '../reducers/products_reducer';
+import { products_reducer } from '../reducers/products_reducer';
 import { IProduct, ProductDetails, ProviderProps } from '../types';
 import { products_url as url } from '../utils/constant';
 import axios from 'axios';
@@ -30,7 +30,7 @@ const initialState = {
 };
 
 export const ProductProvider = ({ children }: ProviderProps) => {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [state, dispatch] = useReducer(products_reducer, initialState);
 
   const getProducts = async (url: string) => {
     dispatch({ type: 'GET_PRODUCTS_BEGIN' });

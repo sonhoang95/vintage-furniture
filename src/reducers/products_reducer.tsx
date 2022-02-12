@@ -14,7 +14,10 @@ export interface ProductsAction {
   payload?: any;
 }
 
-export const reducer = (state: ProductsState, action: ProductsAction) => {
+export const products_reducer = (
+  state: ProductsState,
+  action: ProductsAction
+) => {
   switch (action.type) {
     case 'GET_PRODUCTS_BEGIN':
       return { ...state, products_loading: true };

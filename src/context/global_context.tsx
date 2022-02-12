@@ -1,5 +1,5 @@
 import React, { useContext, useReducer } from 'react';
-import { reducer } from '../reducers/global_reducer';
+import { global_reducer } from '../reducers/global_reducer';
 import { ProviderProps } from '../types';
 
 export interface GlobalState {
@@ -20,7 +20,7 @@ const initialState: GlobalState = {
 };
 
 export const GlobalProvider = ({ children }: ProviderProps) => {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [state, dispatch] = useReducer(global_reducer, initialState);
 
   const openSidebar = () => {
     dispatch({ type: 'OPEN_SIDEBAR' });

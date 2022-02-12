@@ -7,7 +7,7 @@ interface GlobalAction {
   payload?: any;
 }
 
-export const reducer = (state: GlobalState, action: GlobalAction) => {
+export const global_reducer = (state: GlobalState, action: GlobalAction) => {
   switch (action.type) {
     case 'OPEN_SIDEBAR':
       return { ...state, isSidebarOpen: true };
