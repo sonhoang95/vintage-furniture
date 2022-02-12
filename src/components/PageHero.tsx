@@ -10,10 +10,10 @@ const PageHero = ({ title, showProduct }: PageHeroProps) => {
     <div className="py-12 bg-gray-200 mb-8">
       <div className="container mx-auto px-8 lg:px-32">
         <h3 className="capitalize font-semibold text-3xl">
-          <Link to="/" className="text-orange-500">
+          <Link to="/" className="text-orange-600">
             Home{' '}
             {showProduct && (
-              <Link to="/products" className="text-orange-800">
+              <Link to="/products" className="text-orange-600">
                 {' '}
                 / Products
               </Link>
