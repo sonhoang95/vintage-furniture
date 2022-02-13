@@ -7,7 +7,7 @@ const ProductImages = ({ images = [] }: { images: Image[] }) => {
   return (
     <div className="lg:w-1/2">
       <img
-        className="h-[600px] w-full mb-4 rounded"
+        className="h-[250px] lg:h-[600px] w-full mb-4 rounded"
         src={mainImage?.url}
         alt={mainImage?.filename}
       />
@@ -19,7 +19,7 @@ const ProductImages = ({ images = [] }: { images: Image[] }) => {
               key={index}
               src={image?.url}
               alt={image?.filename}
-              className={`h-[100px] w-full cursor-pointer ${
+              className={`h-[50px] lg:h-[100px] w-full cursor-pointer ${
                 image.url === mainImage.url &&
                 'border-2 rounded border-orange-800'
               }`}

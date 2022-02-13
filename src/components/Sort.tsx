@@ -12,7 +12,7 @@ const Sort = () => {
     handleSort,
   } = useFilterContext();
   return (
-    <section className="mb-4 grid grid-cols-[45px_auto_auto] md:grid-cols-[auto_auto_1fr_auto] lg:grid-cols-[auto_auto_1fr_auto] gap-2 lg:gap-4 items-center">
+    <section className="mb-4 grid grid-cols-2 md:grid-cols-[auto_auto_1fr_auto] lg:grid-cols-[auto_auto_1fr_auto] gap-2 lg:gap-4 items-center">
       <div className="space-x-1 text-xs">
         <button
           onClick={setGridView}
@@ -31,11 +31,9 @@ const Sort = () => {
           <BsList />
         </button>
       </div>
-      <p className="capitalize text-xs lg:text-sm">
-        {products.length} products found
-      </p>
+      <p className="capitalize text-sm">{products.length} products found</p>
       <hr className="hidden md:block lg:block" />
-      <form className="text-xs lg:text-sm">
+      <form className="text-sm col-span-2 lg:col-auto">
         <label htmlFor="sort" className="capitalize font-semibold">
           sort by :
         </label>

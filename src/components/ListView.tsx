@@ -8,8 +8,8 @@ const ListView = ({ products }: { products: IProduct[] }) => {
       {products.map(product => {
         const { id, image, name, price, description } = product;
         return (
-          <article key={id} className="flex gap-12 mb-12">
-            <div className="w-[650px]">
+          <article key={id} className="flex flex-col lg:flex-row gap-12 mb-12">
+            <div className="lg:w-[650px]">
               <img src={image} alt={name} className="w-full h-[200px]" />
             </div>
             <div className="space-y-2">
@@ -22,7 +22,7 @@ const ListView = ({ products }: { products: IProduct[] }) => {
               </p>
               <Link
                 to={`/products/${id}`}
-                className="px-3 py-1 bg-orange-900 hover:bg-orange-700 transition-colors duration-200 text-orange-50 inline-block text-sm capitalize rounded-lg"
+                className="px-3 py-1 bg-orange-400 hover:bg-orange-700 transition-colors duration-200 text-white inline-block text-sm capitalize rounded-lg"
               >
                 View details
               </Link>

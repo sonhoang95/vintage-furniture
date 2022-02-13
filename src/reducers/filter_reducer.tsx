@@ -6,9 +6,9 @@ export type FilterTypes =
   | 'SET_LISTVIEW'
   | 'SORT_PRODUCTS'
   | 'UPDATE_SORT'
-  | 'UPDATE_FILTER'
+  | 'UPDATE_FILTERS'
   | 'FILTER_PRODUCTS'
-  | 'CLEAR_FILTER';
+  | 'CLEAR_FILTERS';
 
 export interface FilterAction {
   type: FilterTypes;
@@ -18,8 +18,13 @@ export interface FilterAction {
 export const filter_reducer = (state: FilterState, action: FilterAction) => {
   switch (action.type) {
     case 'LOAD_PRODUCTS': {
+      let maxPrice = action.payload.map(
+        (product: { price: any }) => product.price
+      );
+      maxPrice = Math.max(...maxPrice);
       return {
         ...state,
+        filters: { ...state.filters, max_price: maxPrice, price: maxPrice },
         all_products: [...action.payload],
         filtered_products: [...action.payload],
       };
@@ -55,6 +60,11 @@ export const filter_reducer = (state: FilterState, action: FilterAction) => {
       }
       return { ...state, filtered_products: tempProducts };
     }
+    case 'UPDATE_FILTERS':
+      const { name, value } = action.payload;
+      return { ...state, filters: { ...state.filters, [name]: value } };
+    case 'FILTER_PRODUCTS':
+      return { ...state };
     default:
       throw new Error(`no matching ${action.type} action type`);
   }
