@@ -33,9 +33,9 @@ const initialState = {
   sort: 'price-lowest',
   filters: {
     text: '',
-    category: '',
-    company: '',
-    color: '',
+    category: 'all',
+    company: 'all',
+    color: 'all',
     max_price: 0,
     min_price: 0,
     price: 0,
@@ -90,7 +90,17 @@ export const FilterProvider = ({ children }: ProviderProps) => {
 
   const handleFilters = (e: React.ChangeEvent) => {
     let name = (e.target as HTMLInputElement).name;
-    let value = (e.target as HTMLInputElement).value;
+    let value = (e.target as HTMLInputElement).value as number | string;
+    if (name === 'category') {
+      value = e.target.textContent as string;
+    }
+    if (name === 'color') {
+      value = (e.target as HTMLInputElement).dataset.color as string;
+      console.log(value);
+    }
+    if (name === 'price') {
+      value = Number(value);
+    }
     dispatch({ type: 'UPDATE_FILTERS', payload: { name, value } });
   };
 

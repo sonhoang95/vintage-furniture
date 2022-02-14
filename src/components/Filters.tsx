@@ -52,7 +52,7 @@ const Filters = () => {
                   type="button"
                   className={`capitalize text-sm text-gray-500 hover:text-gray-900 tracking-wider ${
                     category === c?.toString().toLowerCase()
-                      ? 'underline text-gray-900'
+                      ? 'border-b border-gray-900 text-gray-900'
                       : null
                   }`}
                 >
@@ -61,6 +61,83 @@ const Filters = () => {
               ))}
             </div>
           </div>
+          {/* end of categories */}
+          {/* companies */}
+          <div className="border-b lg:border-none border-gray-200 mb-6 pb-5 lg:pb-3 lg:mb-0">
+            <h5 className="font-semibold mb-3">Company</h5>
+            <select
+              name="company"
+              value={company}
+              onChange={handleFilters}
+              className="capitalize"
+            >
+              {companies.map((c, index) => (
+                <option key={index}>{c}</option>
+              ))}
+            </select>
+          </div>
+          {/* end of companies */}
+          {/* colors */}
+          <div className="border-b lg:border-none border-gray-200 mb-6 pb-7 lg:pb-2 lg:mb-3">
+            <h5 className="font-semibold mb-3">Colors</h5>
+            <div className="flex gap-2 items-center text-sm">
+              {colors.map((c, index) => {
+                if (c === 'all') {
+                  return (
+                    <button
+                      type="button"
+                      key={index}
+                      name="color"
+                      onClick={handleFilters}
+                      data-color="all"
+                      className={`text-gray-500 ${
+                        color === c
+                          ? 'border-b text-gray-900 border-gray-900'
+                          : null
+                      }`}
+                    >
+                      All
+                    </button>
+                  );
+                }
+                return (
+                  <button
+                    type="button"
+                    key={index}
+                    name="color"
+                    style={{ background: c as string }}
+                    data-color={c}
+                    className={`w-[17px] h-[17px] rounded-full opacity-70 bg-gray-500 flex items-center justify-center ${
+                      c === color ? 'opacity-100' : null
+                    }`}
+                    onClick={handleFilters}
+                  >
+                    {color === c ? (
+                      <FaCheck className="text-[10px] text-white" />
+                    ) : null}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+          {/* end colors */}
+          {/* price */}
+          <div className="border-b lg:border-none border-gray-200 mb-6 pb-7 lg:pb-0">
+            <h5 className="font-semibold mb-3">Price</h5>
+            <p>{formatPrice(price)}</p>
+            <input
+              type="range"
+              name="price"
+              onChange={handleFilters}
+              min={min_price}
+              max={max_price}
+              value={price}
+            />
+          </div>
+          {/* end price */}
+          {/* shipping */}
+
+          {/* end shipping */}
         </form>
       </div>
     </section>

@@ -31,7 +31,9 @@ const Sort = () => {
           <BsList />
         </button>
       </div>
-      <p className="capitalize text-sm">{products.length} products found</p>
+      <p className="capitalize text-sm justify-self-end">
+        {products.length} products found
+      </p>
       <hr className="hidden md:block lg:block" />
       <form className="text-sm col-span-2 lg:col-auto">
         <label htmlFor="sort" className="capitalize font-semibold">
