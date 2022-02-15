@@ -80,7 +80,7 @@ const Filters = () => {
           {/* colors */}
           <div className="border-b lg:border-none border-gray-200 mb-6 pb-7 lg:pb-2 lg:mb-3">
             <h5 className="font-semibold mb-3">Colors</h5>
-            <div className="flex gap-2 items-center text-sm">
+            <div className="flex gap-2 items-center text-sm z-0">
               {colors.map((c, index) => {
                 if (c === 'all') {
                   return (
@@ -122,7 +122,7 @@ const Filters = () => {
           </div>
           {/* end colors */}
           {/* price */}
-          <div className="border-b lg:border-none border-gray-200 mb-6 pb-7 lg:pb-0">
+          <div className="border-b lg:border-none border-gray-200 mb-3 pb-6 lg:pb-0">
             <h5 className="font-semibold mb-3">Price</h5>
             <p>{formatPrice(price)}</p>
             <input
@@ -136,9 +136,25 @@ const Filters = () => {
           </div>
           {/* end price */}
           {/* shipping */}
-
+          <div className="border-b lg:border-none border-gray-200 mb-6 pt-4 lg:pt-0 pb-7 lg:pb-0 flex items-center gap-2">
+            <label htmlFor="shipping">Free shipping</label>
+            <input
+              type="checkbox"
+              name="shipping"
+              id="shipping"
+              checked={shipping}
+              onChange={handleFilters}
+            />
+          </div>
           {/* end shipping */}
         </form>
+        <button
+          type="button"
+          onClick={clearFilters}
+          className="px-4 py-1 text-white bg-red-600 rounded-lg hover:bg-red-700 mb-6 lg:mb-0 transition-colors duration-300"
+        >
+          Clear Filters
+        </button>
       </div>
     </section>
   );

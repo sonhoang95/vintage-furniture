@@ -63,7 +63,7 @@ const Reviews = ({ reviews }: ReviewsProps) => {
               >
                 <p
                   className={`leading-relaxed tracking-wide ${
-                    activeReview === index ? 'text-gray-900' : 'text-gray-500'
+                    activeReview === index ? 'text-gray-900' : 'text-gray-400'
                   }`}
                 >
                   "{text}"
@@ -75,8 +75,24 @@ const Reviews = ({ reviews }: ReviewsProps) => {
                     className="w-14 h-14 rounded-full"
                   />
                   <div className="tracking-wider">
-                    <h4 className="text-xl font-semibold">{name}</h4>
-                    <p className="text-gray-500">{location}</p>
+                    <h4
+                      className={`text-xl font-semibold ${
+                        activeReview === index
+                          ? 'text-gray-900'
+                          : 'text-gray-400'
+                      }`}
+                    >
+                      {name}
+                    </h4>
+                    <p
+                      className={`${
+                        activeReview === index
+                          ? 'text-gray-900'
+                          : 'text-gray-400'
+                      }`}
+                    >
+                      {location}
+                    </p>
                   </div>
                 </div>
               </article>

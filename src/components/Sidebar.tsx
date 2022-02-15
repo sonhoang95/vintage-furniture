@@ -11,7 +11,7 @@ const Sidebar = () => {
     <aside
       className={`${
         isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
-      } transform transition-transform duration-300 fixed lg:static lg:hidden top-0 lef-0 w-full h-full bg-white`}
+      } transform transition-transform duration-300 fixed lg:static z-10 lg:hidden top-0 lef-0 w-full h-full bg-white`}
     >
       <div className="flex items-center justify-between w-full p-8">
         {/* Logo */}

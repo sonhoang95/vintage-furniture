@@ -90,7 +90,10 @@ export const FilterProvider = ({ children }: ProviderProps) => {
 
   const handleFilters = (e: React.ChangeEvent) => {
     let name = (e.target as HTMLInputElement).name;
-    let value = (e.target as HTMLInputElement).value as number | string;
+    let value = (e.target as HTMLInputElement).value as
+      | string
+      | number
+      | boolean;
     if (name === 'category') {
       value = e.target.textContent as string;
     }
@@ -101,10 +104,15 @@ export const FilterProvider = ({ children }: ProviderProps) => {
     if (name === 'price') {
       value = Number(value);
     }
+    if (name === 'shipping') {
+      value = (e.target as HTMLInputElement).checked;
+    }
     dispatch({ type: 'UPDATE_FILTERS', payload: { name, value } });
   };
 
-  const clearFilters = () => {};
+  const clearFilters = () => {
+    dispatch({ type: 'CLEAR_FILTERS' });
+  };
 
   return (
     <FilterContext.Provider

@@ -65,8 +65,20 @@ export const filter_reducer = (state: FilterState, action: FilterAction) => {
       return { ...state, filters: { ...state.filters, [name]: value } };
     case 'FILTER_PRODUCTS':
       console.log('filtering products');
-
       return { ...state };
+    case 'CLEAR_FILTERS':
+      return {
+        ...state,
+        filters: {
+          ...state.filters,
+          text: '',
+          category: 'all',
+          company: 'all',
+          color: 'all',
+          price: state.filters.max_price,
+          shipping: false,
+        },
+      };
     default:
       throw new Error(`no matching ${action.type} action type`);
   }
