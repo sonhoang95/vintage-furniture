@@ -8,7 +8,7 @@ const ProductList = () => {
 
   if (products.length < 1) {
     return (
-      <h5 className="text-xl font-bold">
+      <h5 className="text-xl font-bold tracking-wider">
         Sorry, no product matched your search...
       </h5>
     );

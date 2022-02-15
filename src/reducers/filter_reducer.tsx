@@ -64,8 +64,45 @@ export const filter_reducer = (state: FilterState, action: FilterAction) => {
       const { name, value } = action.payload;
       return { ...state, filters: { ...state.filters, [name]: value } };
     case 'FILTER_PRODUCTS':
-      console.log('filtering products');
-      return { ...state };
+      const { all_products } = state;
+      let tempProducts = [...all_products];
+      // filtering (note: we have to return the default all data when we do any kind of filtering)
+      const { text, category, color, company, shipping, price } = state.filters;
+      // text
+      if (text) {
+        tempProducts = tempProducts.filter(product => {
+          return product.name.toLowerCase().includes(text);
+        });
+      }
+      // category
+      if (category !== 'all') {
+        tempProducts = tempProducts.filter(
+          product => product.category === category
+        );
+      }
+      // company
+      if (company !== 'all') {
+        tempProducts = tempProducts.filter(
+          product => product.company === company
+        );
+      }
+      // color
+      if (color !== 'all') {
+        tempProducts = tempProducts.filter(product => {
+          return product.colors.find(c => c === color);
+        });
+      }
+
+      // price
+      tempProducts = tempProducts.filter(product => product.price <= price);
+
+      // shipping
+      if (shipping) {
+        tempProducts = tempProducts.filter(
+          product => product.shipping === true
+        );
+      }
+      return { ...state, filtered_products: tempProducts };
     case 'CLEAR_FILTERS':
       return {
         ...state,
