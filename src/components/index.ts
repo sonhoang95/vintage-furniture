@@ -15,7 +15,7 @@ import AddToCart from './AddToCart';
 import Filters from './Filters';
 import Sort from './Sort';
 import ProductList from './ProductList';
-
+import Reviews from './Reviews';
 export {
   Hero,
   Navbar,
@@ -34,4 +34,5 @@ export {
   Filters,
   Sort,
   ProductList,
+  Reviews,
 };

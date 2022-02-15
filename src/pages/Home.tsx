@@ -1,7 +1,16 @@
-import { Contact, FeaturedProducts, Hero, Missions } from '../components';
+import { Fragment } from 'react';
+import {
+  Contact,
+  FeaturedProducts,
+  Hero,
+  Missions,
+  Reviews,
+} from '../components';
 import heroBcg from '../images/hero-bcg.jpg';
 import heroBcgTwo from '../images/hero-bcg-2.jpeg';
-import { Fragment } from 'react';
+import reviewOne from '../images/review-1.jpg';
+import reviewTwo from '../images/review-2.jpg';
+import reviewThree from '../images/review-3.jpg';
 
 const homeContent = {
   hero: {
@@ -45,6 +54,27 @@ const homeContent = {
   },
 };
 
+export const reviews = [
+  {
+    text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, ex! Eum accusantium voluptate, suscipit numquam laboriosam aliquam tempora at iure?',
+    image: reviewOne,
+    name: 'Nessi',
+    location: 'Brooklyn, NY',
+  },
+  {
+    text: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dicta non nihil hic natus asperiores vitae exercitationem beatae quae sapiente corrupti nesciunt explicabo saepe, aliquid voluptas?',
+    image: reviewTwo,
+    name: 'David',
+    location: 'Los Angeles, CA',
+  },
+  {
+    text: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed obcaecati deserunt quae delectus suscipit?',
+    image: reviewThree,
+    name: 'Sean',
+    location: 'Cincinnati, OH',
+  },
+];
+
 const Home = () => {
   const { hero, missions, contact } = homeContent;
   return (
@@ -57,6 +87,7 @@ const Home = () => {
         <Missions {...missions} />
         <FeaturedProducts />
       </div>
+      <Reviews reviews={reviews} />
       <Contact {...contact} />
     </>
   );
