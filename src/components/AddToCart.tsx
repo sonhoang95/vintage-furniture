@@ -1,9 +1,12 @@
 import { useState } from 'react';
 import { ProductDetails } from '../types';
 import { FaCheck } from 'react-icons/fa';
-import { AmountButton, PrimaryButton } from './Buttons';
+import { AmountButton } from './Buttons';
+import { useCartContext } from '../context/cart_context';
+import { Link } from 'react-router-dom';
 
 const AddToCart = ({ product }: { product: ProductDetails }) => {
+  const { addToCart } = useCartContext();
   const { id, stock, colors } = product;
 
   const [mainColor, setMainColor] = useState(colors[0]);
@@ -56,7 +59,13 @@ const AddToCart = ({ product }: { product: ProductDetails }) => {
           onCartIncrement={handleCartIncrement}
           onCartDecrement={handleCartDecrement}
         />
-        <PrimaryButton btnText="add to cart" url="/cart" />
+        <Link
+          to="/cart"
+          className="inline-block px-12 lg:px-8 py-3 uppercase text-sm font-bold bg-orange-400 hover:bg-orange-500 transition-colors duration-300 text-white mb-8 lg:mb-0"
+          onClick={() => addToCart(id, mainColor, amount, product)}
+        >
+          Add to cart
+        </Link>
       </div>
     </section>
   );

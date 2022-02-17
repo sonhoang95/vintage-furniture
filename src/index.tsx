@@ -5,13 +5,16 @@ import App from './App';
 import { GlobalProvider } from './context/global_context';
 import { ProductProvider } from './context/products_context';
 import { FilterProvider } from './context/filter_context';
+import { CartProvider } from './context/cart_context';
 
 ReactDOM.render(
   <React.StrictMode>
     <GlobalProvider>
       <ProductProvider>
         <FilterProvider>
-          <App />
+          <CartProvider>
+            <App />
+          </CartProvider>
         </FilterProvider>
       </ProductProvider>
     </GlobalProvider>
