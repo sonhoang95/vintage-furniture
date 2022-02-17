@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { BsBagFill } from 'react-icons/bs';
 import { useGlobalContext } from '../../context/global_context';
+import { useCartContext } from '../../context/cart_context';
 
 interface CartButtonsProps {
   show: boolean;
@@ -8,6 +9,7 @@ interface CartButtonsProps {
 
 const CartButtons = ({ show }: CartButtonsProps) => {
   const { closeSidebar } = useGlobalContext();
+  const { total_items } = useCartContext();
   return (
     <div
       className={`gap-8 items-center flex lg:flex ${
@@ -21,7 +23,7 @@ const CartButtons = ({ show }: CartButtonsProps) => {
       >
         <BsBagFill />
         <span className="absolute w-5 h-5 flex items-center justify-center text-xs rounded-full top-0 right-0 bg-black text-white transform translate-x-2 -translate-y-2">
-          12
+          {total_items}
         </span>
       </Link>
       <button

@@ -14,7 +14,7 @@ export interface CartContextProps {
     product: ProductDetails
   ) => void;
   removeItem: (id: string) => void;
-  toggleAmount: () => void;
+  toggleAmount: (id: string, value: string) => void;
   clearCart: () => void;
 }
 
@@ -52,6 +52,7 @@ export const CartProvider = ({ children }: ProviderProps) => {
   const [state, dispatch] = useReducer(cart_reducer, initialState);
 
   useEffect(() => {
+    dispatch({ type: 'COUNT_CART_TOTALS' });
     localStorage.setItem('cart', JSON.stringify(state.cart));
   }, [state.cart]);
 
@@ -66,13 +67,19 @@ export const CartProvider = ({ children }: ProviderProps) => {
   };
 
   // remove item
-  const removeItem = (id: string) => {};
+  const removeItem = (id: string) => {
+    dispatch({ type: 'REMOVE_CART_ITEM', payload: id });
+  };
 
   // toggle amount
-  const toggleAmount = () => {};
+  const toggleAmount = (id: string, value: string) => {
+    dispatch({ type: 'TOGGLE_CART_ITEM_AMOUNT', payload: { id, value } });
+  };
 
   // clear cart
-  const clearCart = () => {};
+  const clearCart = () => {
+    dispatch({ type: 'CLEAR_CART' });
+  };
   return (
     <CartContext.Provider
       value={{ ...state, addToCart, removeItem, toggleAmount, clearCart }}

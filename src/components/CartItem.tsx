@@ -14,9 +14,13 @@ export interface CartItemProps {
 const CartItem = ({ id, price, image, name, color, amount }: CartItemProps) => {
   const { removeItem, toggleAmount } = useCartContext();
 
-  const increase = () => {};
+  const increase = () => {
+    toggleAmount(id, 'inc');
+  };
 
-  const decrease = () => {};
+  const decrease = () => {
+    toggleAmount(id, 'dec');
+  };
   return (
     <>
       <hr />
