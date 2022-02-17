@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai';
-
+import { BsCircle, BsFillCircleFill } from 'react-icons/bs';
 export interface Review {
   text: string;
   image: string;
@@ -10,6 +10,8 @@ export interface Review {
 export interface ReviewsProps {
   reviews: Review[];
 }
+
+const dots = [1, 2, 3];
 
 const Reviews = ({ reviews }: ReviewsProps) => {
   const [activeReview, setActiveReview] = useState(1);
@@ -36,7 +38,7 @@ const Reviews = ({ reviews }: ReviewsProps) => {
           <h2 className="text-center lg:text-left text-2xl lg:text-4xl leading-normal font-semibold mb-6 lg:mb-12">
             Words from our customers
           </h2>
-          <div className="space-x-4 text-2xl">
+          <div className="space-x-4 text-2xl text-center lg:text-left">
             <button
               className="bg-white border-gray-900 border rounded-full p-2"
               onClick={handlePrevReview}
@@ -57,7 +59,7 @@ const Reviews = ({ reviews }: ReviewsProps) => {
             return (
               <article
                 key={index}
-                className={`border border-gray-300 shadow-xl rounded px-8 py-6 flex flex-col justify-between h-80 lg:h-72 transform transition-transform duration-200 ease-in-out${
+                className={`border border-gray-300 shadow-xl rounded px-8 py-6 flex flex-col justify-between transform transition-transform duration-200 ease-in-out${
                   activeReview === index ? 'bg-white scale-105' : null
                 }`}
               >
@@ -68,7 +70,7 @@ const Reviews = ({ reviews }: ReviewsProps) => {
                 >
                   "{text}"
                 </p>
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-4 mt-16">
                   <img
                     src={image}
                     alt={name}
@@ -98,6 +100,13 @@ const Reviews = ({ reviews }: ReviewsProps) => {
               </article>
             );
           })}
+        </div>
+        <div className="flex items-center justify-center mt-16 gap-8">
+          {dots.map((dot, index) => (
+            <div key={index}>
+              {activeReview === index ? <BsFillCircleFill /> : <BsCircle />}
+            </div>
+          ))}
         </div>
       </div>
     </section>
