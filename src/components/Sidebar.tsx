@@ -1,11 +1,13 @@
 import { FaTimes } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { useGlobalContext } from '../context/global_context';
+import { useUserContext } from '../context/user_context';
 import { links } from '../utils/constant';
 import { CartButtons } from './Buttons';
 
 const Sidebar = () => {
   const { isSidebarOpen, closeSidebar } = useGlobalContext();
+  const { myUser } = useUserContext();
 
   return (
     <aside
@@ -39,11 +41,13 @@ const Sidebar = () => {
             </li>
           );
         })}
-        <li className="px-8 py-4 hover:bg-gray-100 hover:pl-12 transition-all duration-300">
-          <Link to="/checkout" onClick={closeSidebar}>
-            Checkout
-          </Link>
-        </li>
+        {myUser && (
+          <li className="px-8 py-4 hover:bg-gray-100 hover:pl-12 transition-all duration-300">
+            <Link to="/checkout" onClick={closeSidebar}>
+              Checkout
+            </Link>
+          </li>
+        )}
       </ul>
       <CartButtons show={true} />
     </aside>

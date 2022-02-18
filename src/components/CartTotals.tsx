@@ -1,9 +1,11 @@
 import { Link } from 'react-router-dom';
 import { useCartContext } from '../context/cart_context';
+import { useUserContext } from '../context/user_context';
 import { formatPrice } from '../utils/helpers';
 
 const CartTotals = () => {
   const { total_amount, shipping_fees } = useCartContext();
+  const { myUser, loginWithRedirect } = useUserContext();
   return (
     <div className="flex justify-center lg:justify-end mt-12">
       <div>
@@ -20,12 +22,21 @@ const CartTotals = () => {
             <span>{formatPrice(total_amount + shipping_fees)}</span>
           </h4>
         </article>
-        <Link
-          to="/checkout"
-          className="bg-orange-400 text-white w-full inline-block font-semibold uppercase text-center mt-4 px-3 py-1 rounded mb-12"
-        >
-          Proceed to checkout
-        </Link>
+        {myUser ? (
+          <Link
+            to="/checkout"
+            className="bg-orange-400 text-white w-full inline-block font-semibold uppercase text-center mt-4 px-3 py-1 rounded mb-12"
+          >
+            Proceed to checkout
+          </Link>
+        ) : (
+          <button
+            className="bg-orange-400 text-white w-full inline-block font-semibold uppercase text-center mt-4 px-3 py-1 rounded mb-12"
+            onClick={loginWithRedirect}
+          >
+            Login to checkout
+          </button>
+        )}
       </div>
     </div>
   );

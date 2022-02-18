@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom';
 import { BsBagFill } from 'react-icons/bs';
 import { useGlobalContext } from '../../context/global_context';
 import { useCartContext } from '../../context/cart_context';
+import { useUserContext } from '../../context/user_context';
+import { FaUserPlus, FaUserMinus } from 'react-icons/fa';
 
 interface CartButtonsProps {
   show: boolean;
@@ -10,6 +12,7 @@ interface CartButtonsProps {
 const CartButtons = ({ show }: CartButtonsProps) => {
   const { closeSidebar } = useGlobalContext();
   const { total_items } = useCartContext();
+  const { loginWithRedirect, logout, myUser } = useUserContext();
   return (
     <div
       className={`gap-8 items-center flex lg:flex ${
@@ -26,12 +29,27 @@ const CartButtons = ({ show }: CartButtonsProps) => {
           {total_items}
         </span>
       </Link>
-      <button
-        className="px-6 py-1 rounded-full border border-orange-400 text-orange-400 hover:bg-orange-400 hover:text-white transition-colors duration-300"
-        onClick={closeSidebar}
-      >
-        Login
-      </button>
+      {!myUser ? (
+        <button
+          className="px-6 py-1 rounded-full border border-orange-400 text-orange-400 hover:bg-orange-400 hover:text-white transition-colors duration-300 flex items-center gap-1"
+          onClick={loginWithRedirect}
+        >
+          <span className="text-lg">
+            <FaUserPlus />
+          </span>{' '}
+          Login
+        </button>
+      ) : (
+        <button
+          className="px-6 py-1 rounded-full border border-orange-400 text-orange-400 hover:bg-orange-400 hover:text-white transition-colors duration-300 flex items-center gap-1"
+          onClick={() => logout({ returnTo: window.location.origin })}
+        >
+          <span className="text-lg">
+            <FaUserMinus />
+          </span>{' '}
+          Logout
+        </button>
+      )}
     </div>
   );
 };

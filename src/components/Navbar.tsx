@@ -1,11 +1,13 @@
 import { FaBars } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { useGlobalContext } from '../context/global_context';
+import { useUserContext } from '../context/user_context';
 import { links } from '../utils/constant';
 import { CartButtons } from './Buttons';
 
 const Navbar = () => {
   const { openSidebar } = useGlobalContext();
+  const { myUser } = useUserContext();
   return (
     <header className="pt-8 pb-16 lg:pb-0 lg:mb-12">
       <div className="container mx-auto px-8 lg:px-32">
@@ -34,11 +36,13 @@ const Navbar = () => {
                 </li>
               );
             })}
-            <li>
-              <Link to="checkout" className="hover:text-orange-400">
-                Checkout
-              </Link>
-            </li>
+            {myUser && (
+              <li>
+                <Link to="checkout" className="hover:text-orange-400">
+                  Checkout
+                </Link>
+              </li>
+            )}
           </ul>
 
           {/* Cart Buttons */}
