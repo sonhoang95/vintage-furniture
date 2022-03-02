@@ -1,4 +1,3 @@
-import { stat } from 'fs';
 import { CartContextProps } from '../context/cart_context';
 
 export type CartReducerType =
@@ -80,9 +79,8 @@ export const cart_reducer = (
             }
             return { ...cartItem, amount: newAmount };
           }
-        } else {
-          return cartItem;
         }
+        return cartItem;
       });
       return { ...state, cart: tempCart };
     }

@@ -55,7 +55,6 @@ const SingleProduct = () => {
     name,
     price,
     description,
-    shipping,
     stars,
     stock,
     reviews,

@@ -13,8 +13,7 @@ export interface UserContextProps {
 export const UserContext = React.createContext({} as UserContextProps);
 
 export const UserProvider = ({ children }: ProviderProps) => {
-  const { isAuthenticated, loginWithRedirect, logout, user, isLoading } =
-    useAuth0();
+  const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0();
 
   const [myUser, setMyUser] = useState<any>(null);
 
