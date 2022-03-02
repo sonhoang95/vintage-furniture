@@ -1,4 +1,4 @@
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Layout from './layout';
 import {
   About,
@@ -8,6 +8,7 @@ import {
   Home,
   Products,
   SingleProduct,
+  Checkout,
 } from './pages';
 
 function App() {
@@ -21,7 +22,7 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/products" element={<Products />} />
           <Route path="/products/:id" element={<SingleProduct />} />
-          <Route path="/checkout" element={<Navigate to="/" />} />
+          <Route path="/checkout" element={<Checkout />} />
           <Route path="*" element={<Error />} />
         </Routes>
       </Layout>

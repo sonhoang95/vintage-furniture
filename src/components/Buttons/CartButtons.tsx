@@ -11,7 +11,7 @@ interface CartButtonsProps {
 
 const CartButtons = ({ show }: CartButtonsProps) => {
   const { closeSidebar } = useGlobalContext();
-  const { total_items } = useCartContext();
+  const { total_items, clearCart } = useCartContext();
   const { loginWithRedirect, logout, myUser } = useUserContext();
   return (
     <div
@@ -42,7 +42,10 @@ const CartButtons = ({ show }: CartButtonsProps) => {
       ) : (
         <button
           className="px-6 py-1 rounded-full border border-orange-400 text-orange-400 hover:bg-orange-400 hover:text-white transition-colors duration-300 flex items-center gap-1"
-          onClick={() => logout({ returnTo: window.location.origin })}
+          onClick={() => {
+            clearCart();
+            logout({ returnTo: window.location.origin });
+          }}
         >
           <span className="text-lg">
             <FaUserMinus />
