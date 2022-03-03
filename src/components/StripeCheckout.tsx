@@ -1,4 +1,4 @@
-import { loadStripe } from '@stripe/stripe-js';
+import { loadStripe, StripeCardElementChangeEvent } from '@stripe/stripe-js';
 import {
   CardElement,
   useStripe,
@@ -21,7 +21,7 @@ const CheckoutForm = () => {
 
   // STRIPE STUFF
   const [succeeded, setSucceeded] = useState(false);
-  const [error, setError] = useState(true);
+  const [error, setError] = useState<string | null>('');
   const [processing, setProcessing] = useState(false);
   const [disabled, setDisabled] = useState(true);
   const [clientSecret, setClientSecret] = useState('');
@@ -63,20 +63,40 @@ const CheckoutForm = () => {
     // eslint-disable-next-line
   }, []);
 
-  const handleChange = async () => {
-    console.log('hello');
+  const handleChange = async (event: StripeCardElementChangeEvent) => {
+    setDisabled(event.empty);
+    setError(event.error ? event.error.message : '');
   };
-  const handleSubmit = async () => {
-    console.log('hello');
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setProcessing(true);
+    const payload = await stripe?.confirmCardPayment(clientSecret, {
+      payment_method: { card: elements?.getElement(CardElement)! },
+    });
+    if (payload?.error) {
+      setError(`Payment failed ${payload.error.message}`);
+      setProcessing(false);
+    } else {
+      setError(null);
+      setProcessing(false);
+      setSucceeded(true);
+      setTimeout(() => {
+        clearCart();
+        navigate('/');
+      }, 5000);
+    }
   };
 
   return (
     <div>
       {succeeded ? (
-        <article>
-          <h4>Thank you, {myUser && myUser.name}!</h4>
-          <h4>Your payment was successful!</h4>
-          <h4>Redirect to homepage shortly</h4>
+        <article className="space-y-3 text-center mt-6 mb-8">
+          <h4 className="text-2xl font-semibold">
+            Thank you, {myUser && myUser.name}!
+          </h4>
+          <h4 className="text-2xl font-semibold">
+            Your payment was successful!
+          </h4>
         </article>
       ) : (
         <article className="space-y-3 capitalize mb-6 mt-12 text-center">
@@ -119,7 +139,11 @@ const CheckoutForm = () => {
           </div>
         )}
         {/* Show a success msg upon completion */}
-        <p className={succeeded ? 'result-message' : 'result-message hidden'}>
+        <p
+          className={
+            succeeded ? 'result-message text-center' : 'result-message hidden'
+          }
+        >
           Payment succeeded, see the result in your
           <a href={`https://dashboard.stripe.com/test/payments`}>
             {' '}
