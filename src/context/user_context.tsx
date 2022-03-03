@@ -8,7 +8,7 @@ export interface UserContextProps {
     options?: RedirectLoginOptions | undefined
   ) => Promise<void>;
   logout: (options?: LogoutOptions | undefined) => void;
-  myUser: null;
+  myUser: any;
 }
 export const UserContext = React.createContext({} as UserContextProps);
 

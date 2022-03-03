@@ -46,12 +46,21 @@ const CheckoutForm = () => {
       },
     },
   };
-  const createPaymentIntent = async () => {
-    console.log('hello from stripe checkout');
-  };
 
+  const createPaymentIntent = async () => {
+    try {
+      const { data } = await axios.post(
+        '/.netlify/functions/create-payment-intent',
+        JSON.stringify({ cart, shipping_fees, total_amount })
+      );
+      setClientSecret(data.clientSecret);
+    } catch (error: any) {
+      console.log(error.response);
+    }
+  };
   useEffect(() => {
     createPaymentIntent();
+    // eslint-disable-next-line
   }, []);
 
   const handleChange = async () => {
@@ -63,10 +72,26 @@ const CheckoutForm = () => {
 
   return (
     <div>
+      {succeeded ? (
+        <article>
+          <h4>Thank you, {myUser && myUser.name}!</h4>
+          <h4>Your payment was successful!</h4>
+          <h4>Redirect to homepage shortly</h4>
+        </article>
+      ) : (
+        <article className="space-y-3 capitalize mb-6 mt-12 text-center">
+          <h4 className="text-2xl lg:text-3xl font-semibold text-orange-400">
+            Great! That's {formatPrice(shipping_fees + total_amount)}!
+          </h4>
+          <p className="text-sm lg:text-base text-gray-500">
+            — Test card number: 4242 4242 4242 4242 —
+          </p>
+        </article>
+      )}
       <form
         action=""
         id="payment-form"
-        className="stripe-form"
+        className="stripe-form mb-24"
         onSubmit={handleSubmit}
       >
         <CardElement
@@ -80,7 +105,11 @@ const CheckoutForm = () => {
           disabled={disabled || processing || succeeded}
         >
           <span id="button-text">
-            {processing ? <div className="spinner" id="spinner"></div> : 'Pay'}
+            {processing ? (
+              <div className="spinner" id="spinner"></div>
+            ) : (
+              `Pay: ${formatPrice(shipping_fees + total_amount)}`
+            )}
           </span>
         </button>
         {/* Show any error when processing payment */}
