@@ -38,8 +38,8 @@ export const links = [
   },
   {
     id: 4,
-    text: 'FAQ',
-    url: '/faq',
+    text: 'FAQs',
+    url: '/faqs',
   },
 ];
 
@@ -180,7 +180,7 @@ export const aboutContent = {
 };
 
 export const faqContent = {
-  title: 'FAQ',
+  title: 'FAQs',
   text: "Quality is at the heart of everything we do, whether it's about the eco friendly materials we are using or the service we provide",
   accordions: [
     {
